@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Silver Pear</title>
+    
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css"/>
+    <link rel="stylesheet" href="humburger.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+      <script src="{{url_for('static', filename='menu.js')}}"></script>
+      <script src="{{url_for('static', filename='content.js')}}"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <header class="header"> <!-- шапка сайта -->
+    <div class="container">
+      <div class="header__flex">
+        <div class="header__logo"><a href=""><img src="/static/images/logos/logo2.png" alt = "Silver Pear"></a></div> <!-- логотип -->
+        <nav class="header__nav"> <!-- десктоп навигация -->
+          <ul>
+            <li><a href="">ГЛАВНАЯ</a></li>
+            <li><a href="">КАТАЛОГ</a></li>
+            <li><a href="">КОРЗИНА</a></li>
+            <li><a href="">О НАС</a></li>
+            <li><a href="">КОНТАКТЫ</a></li>
+          </ul>
+        </nav>
+        <div class="header__hamburger header__hamburger_open"> <!-- элемент для открытия мобильной навигации -->
+          <button class="hamburger hamburger--slider-r" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="overlay"></div> <!-- блок затемнения области контента -->
+  
+  <div class="mobile"> <!-- мобильная навигация -->
+    <div class="mobile__hamburger mobile__hamburger_close"> <!-- элемент для закрытия мобильной навигации -->
+      <button class="hamburger hamburger--slider-r is-active" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
+    </div>
+    <div class="mobile__nav">
+      <ul>
+        <li><a href="">ГЛАВНАЯ</a></li>
+        <li><a href="">КАТАЛОГ</a></li>
+        <li><a href="">КОРЗИНА</a></li>
+        <li><a href="">О НАС</a></li>
+        <li><a href="">КОНТАКТЫ</a></li>
+      </ul>
+    </div>
+  </div>
+    <div class="wrapper">
+        <input type="radio" name="point" id="slide1" checked>
+        <input type="radio" name="point" id="slide2">
+        <input type="radio" name="point" id="slide3">
+        <input type="radio" name="point" id="slide4">
+        <input type="radio" name="point" id="slide5">
+    
+    
+        <div class="slider">
+            <div class="slides slide1">
+                <li class="sim-slider-element1"><img src="../static/images/slider/sl1.jpg" style="width: 1220px;" alt="1"></li>
+            </div>
+            <div class="slides slide2"> 
+                <li class="sim-slider-element1"><img src="../static/images/slider/sl2.jpg" style="width: 1220px;" alt="2"></li>
+            </div>
+            <div class="slides slide3">
+                <li class="sim-slider-element1"><img src="../static/images/slider/sl3.jpg" style="width: 1220px;" alt="3"></li>
+            </div>
+            <div class="slides slide4">
+                <li class="sim-slider-element1"><img src="../static/images/slider/sl4.jpg" style="width: 1220px;" alt="4"></li>
+            </div>
+            <div class="slides slide5">
+                <li class="sim-slider-element1"><img src="../static/images/slider/sl5.jpg" style="width: 1220px;" alt="5"></li>
+            </div>
+        </div>	
+    
+        <div class="controls">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+            <label for="slide4"></label>
+            <label for="slide5"></label>
+        </div>
+    </div>
+    <body>
+    <section class="cards">
+    <div class="container">
+      <div class="cards__title">Акции</div>
+      <div class="cards__flex">
+        <div class="cards__col">
+          <div class="cards__card card">
+            <div class="card__image"><a href=""><img src="../static/images/products/1.jpg" alt="1"/></a></div>
+            <div class="card__body">
+              <div class="card__title">Бальзам</div>
+              <div class="card__text"><a href="">ELEMIS pro-collagen cleaning balm</a></div>
+              <div class="card__bottom">
+                <div class="card__price"><span>Р </span>5499</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cards__col">
+          <div class="cards__card card">
+            <div class="card__image"><a href=""><img src="../static/images/products/2.jpg" alt="2"/></a></div>
+            <div class="card__body">
+              <div class="card__title">Жидкое мыло</div>
+              <div class="card__text"><a href="">ESSENTIAL PARFUMS PARIS divine vanille</a></div>
+              <div class="card__bottom">
+                <div class="card__price"><span>Р </span>2499</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cards__col">
+          <div class="cards__card card">
+            <div class="card__image"><a href=""><img src="../static/images/products/4.jpg" alt="3"/></a></div>
+            <div class="card__body">
+              <div class="card__title">Мусс для губ</div>
+              <div class="card__text"><a href="">DEAR DAHLIA paradise dream velvet</a></div>
+              <div class="card__bottom">
+                <div class="card__price"><span>Р </span>1999</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards" id="scroller">
+    <div class="container">
+      <div class="cards__title">Новинки</div>
+      <div class="cards__flex">
+          {% for product in products %}
+          <div class="cards__col">
+              <div class="cards__card card">
+                <div class="card__image"><a href=""><img src="../static/images/products/{{product.image}}" alt="1"/></a></div>
+                  <div class="card__body">
+                      <div class="card__title">{{product.title}}</div>
+                      <div class="card__text"><a href="">{{product.text}}</a></div>
+                      <div class="card__bottom">
+                    <div class="card__price">
+                        <span>Р</span>{{product.price}}
+                    </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+  </section>
+
+  <footer class = "footer">
+    <div class = "container_footer">
+        <div class = "contact_footer"
+            <p>СЛУЖБА ПОДДЕРЖКИ КЛИЕНТОВ:<br>
+                8 800 770 70 21<br>
+                <br>
+                отдел коммерции, для предложений от поставщиков<br>
+                <br>
+                development@grusha.ru – отдел развития, для предложений по аренде площадей<br>
+                <br>
+                marketing@grusha.ru - отдел маркетинга, для маркетинговой активности и рекламы<br>
+                <br>
+                документы сайта<br>
+                <br>
+                политика обработки персональных данных</p>
+        </div>
+
+        <div class="footer_logo">
+            <figure>
+                <img src="/static/images/logos/logo2.png" alt = "Silver Pear">
+            </figure>
+    
+        </div>
+        
+        <div class = "social_media_footer">
+            <h3> МЫ В СОЦИАЛЬНЫХ СЕТЯХ</h3>
+
+            <div class = "social_media">
+                <div class = "social_media_image"><img src="/static/images/logos/telegram.png" alt = "Telegram link"></div>
+                <h4 class = "social_media_link" href="#"> TELEGRAM</h4>
+            </div>
+
+            <div class = "social_media">
+                <div class = "social_media_image"><img src="/static/images/logos/vk.png" alt = "VK link"></div>
+                <h4 class = "social_media_link" href="#"> VK</h4>
+            </div>
+
+            <div class = "social_media">
+                <div class = "social_media_image"><img src="/static/images/logos/tiktok.png" alt = "Tiktok link"></div>
+                <h4 class = "social_media_link" href="#"> TIKTOK</h4>
+            </div>
+
+            
+        </div>
+
+    </div>
+    </footer>
+    </body>
+
+</html>
